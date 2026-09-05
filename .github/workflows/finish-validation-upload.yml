@@ -1,0 +1,48 @@
+name: Finish validation upload
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/finish-validation-upload.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruct and verify artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p examples/results examples
+          cat ._upload/abelian.*.b64 | tr -d '\n' | base64 -d | gzip -d > examples/results/abelian_class_field_checks.json
+          cat ._upload/cert.*.b64 | tr -d '\n' | base64 -d | gzip -d > examples/CERT_example_C4.json
+          echo '07cad71a50de95c81b5338596b79dbe804bccf6c  examples/results/abelian_class_field_checks.json' | sha1sum -c -
+          echo '4eabc41d873e5e6bc36f5952a19b2f1c1d939504  examples/CERT_example_C4.json' | sha1sum -c -
+          python - <<'PY'
+          import json
+          a = json.load(open('examples/results/abelian_class_field_checks.json'))
+          c = json.load(open('examples/CERT_example_C4.json'))
+          assert len(a) == 530
+          assert all(x.get('status') == 'ok' for x in a)
+          assert c.get('format') == 'artin-CERT-1'
+          PY
+      - name: Commit artifacts and clean staging
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf ._upload
+          rm -f .github/workflows/finish-validation-upload.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add validation and certificate examples'
+          git push
