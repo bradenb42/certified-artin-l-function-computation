@@ -23,30 +23,78 @@ jobs:
           mkdir -p examples/results examples
           python - <<'PY'
           from pathlib import Path
-          import base64, gzip, hashlib, json
+          import base64, gzip, hashlib, json, zlib
 
-          def reconstruct(prefix, target, expected_sha1, repair=None):
-              chunks = [p.read_text() for p in sorted(Path('._upload').glob(prefix + '*.b64'))]
-              if repair is not None:
-                  index, char = repair
-                  chunks[-1] = chunks[-1][:index] + char + chunks[-1][index:]
-              encoded = ''.join(chunks)
+          ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+
+          def numeric_chunks(prefix):
+              out = []
+              for p in Path('._upload').glob(prefix + '*.b64'):
+                  middle = p.name[len(prefix):-4]
+                  if middle.isdigit():
+                      out.append(p)
+              return [p.read_text() for p in sorted(out)]
+
+          def decode_checked(encoded, expected_sha1):
               raw = gzip.decompress(base64.b64decode(encoded, validate=True))
-              assert hashlib.sha1(raw).hexdigest() == expected_sha1
-              Path(target).write_bytes(raw)
-              return json.loads(raw)
+              if hashlib.sha1(raw).hexdigest() != expected_sha1:
+                  raise ValueError('SHA-1 mismatch')
+              return raw
 
-          a = reconstruct(
-              'abelian.',
-              'examples/results/abelian_class_field_checks.json',
+          def repair_one_missing_base64_char(encoded, expected_sha1):
+              try:
+                  return decode_checked(encoded, expected_sha1)
+              except Exception:
+                  pass
+
+              padded = encoded + '=' * ((-len(encoded)) % 4)
+              compressed = base64.b64decode(padded, validate=False)
+              dec = zlib.decompressobj(16 + zlib.MAX_WBITS)
+              fail = None
+              for i, b in enumerate(compressed):
+                  try:
+                      dec.decompress(bytes([b]))
+                  except zlib.error:
+                      fail = i
+                      break
+              approx = len(encoded) - 4000 if fail is None else (fail * 4) // 3
+
+              ranges = [
+                  range(max(0, approx - 384), min(len(encoded) + 1, approx + 385)),
+                  range(max(0, len(encoded) - 8000), len(encoded) + 1),
+              ]
+              tried = set()
+              for positions in ranges:
+                  for pos in positions:
+                      if pos in tried:
+                          continue
+                      tried.add(pos)
+                      for ch in ALPHABET:
+                          candidate = encoded[:pos] + ch + encoded[pos:]
+                          try:
+                              raw = decode_checked(candidate, expected_sha1)
+                          except Exception:
+                              continue
+                          print(f'repaired missing base64 character at position {pos}: {ch}')
+                          return raw
+              raise RuntimeError('could not repair staged base64 stream')
+
+          abelian_chunks = numeric_chunks('abelian.')
+          prefix = Path('._upload/abelian.r00a.b64').read_text()
+          abelian_chunks[0] = prefix + abelian_chunks[0][len(prefix):]
+          abelian_encoded = ''.join(abelian_chunks)
+          abelian_raw = repair_one_missing_base64_char(
+              abelian_encoded,
               '07cad71a50de95c81b5338596b79dbe804bccf6c',
-              repair=(3250, 'U'),
           )
-          c = reconstruct(
-              'cert.',
-              'examples/CERT_example_C4.json',
-              '4eabc41d873e5e6bc36f5952a19b2f1c1d939504',
-          )
+          Path('examples/results/abelian_class_field_checks.json').write_bytes(abelian_raw)
+          a = json.loads(abelian_raw)
+
+          cert_encoded = ''.join(numeric_chunks('cert.'))
+          cert_raw = decode_checked(cert_encoded, '4eabc41d873e5e6bc36f5952a19b2f1c1d939504')
+          Path('examples/CERT_example_C4.json').write_bytes(cert_raw)
+          c = json.loads(cert_raw)
+
           assert len(a) == 530
           assert all(x.get('status') == 'ok' for x in a)
           assert c.get('format') == 'artin-CERT-1'
