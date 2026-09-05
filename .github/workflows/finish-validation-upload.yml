@@ -21,14 +21,32 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p examples/results examples
-          cat ._upload/abelian.*.b64 | tr -d '\n' | base64 -d | gzip -d > examples/results/abelian_class_field_checks.json
-          cat ._upload/cert.*.b64 | tr -d '\n' | base64 -d | gzip -d > examples/CERT_example_C4.json
-          echo '07cad71a50de95c81b5338596b79dbe804bccf6c  examples/results/abelian_class_field_checks.json' | sha1sum -c -
-          echo '4eabc41d873e5e6bc36f5952a19b2f1c1d939504  examples/CERT_example_C4.json' | sha1sum -c -
           python - <<'PY'
-          import json
-          a = json.load(open('examples/results/abelian_class_field_checks.json'))
-          c = json.load(open('examples/CERT_example_C4.json'))
+          from pathlib import Path
+          import base64, gzip, hashlib, json
+
+          def reconstruct(prefix, target, expected_sha1, repair=None):
+              chunks = [p.read_text() for p in sorted(Path('._upload').glob(prefix + '*.b64'))]
+              if repair is not None:
+                  index, char = repair
+                  chunks[-1] = chunks[-1][:index] + char + chunks[-1][index:]
+              encoded = ''.join(chunks)
+              raw = gzip.decompress(base64.b64decode(encoded, validate=True))
+              assert hashlib.sha1(raw).hexdigest() == expected_sha1
+              Path(target).write_bytes(raw)
+              return json.loads(raw)
+
+          a = reconstruct(
+              'abelian.',
+              'examples/results/abelian_class_field_checks.json',
+              '07cad71a50de95c81b5338596b79dbe804bccf6c',
+              repair=(3250, 'U'),
+          )
+          c = reconstruct(
+              'cert.',
+              'examples/CERT_example_C4.json',
+              '4eabc41d873e5e6bc36f5952a19b2f1c1d939504',
+          )
           assert len(a) == 530
           assert all(x.get('status') == 'ok' for x in a)
           assert c.get('format') == 'artin-CERT-1'
