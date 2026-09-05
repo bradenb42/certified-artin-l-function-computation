@@ -1,0 +1,11 @@
+{
+ "version": "descent-example",
+ "f": [-1, -1, 0, 0, 0, 1],
+ "n": 5,
+ "numbering": {"prime": 7, "precision": 1, "roots": [0, 0, 0, 0, 0],
+               "note": "placeholder: the descent artifact records the p-adic roots in the fixed numbering here"},
+ "group": {"generators": [[2, 3, 4, 5, 1], [2, 1, 3, 4, 5]], "order": 120},
+ "chain": [],
+ "verified": false,
+ "note": "Example of the input format. A real descent certificate carries the chain S_n > G_1 > ... > G, the invariants F_i, the values c_i, the resolvents and the distinctness flags (A3 section 1, A23 G0.2); B1 copies them verbatim into certificate.json and consumes only f and the generators."
+}
