@@ -1,0 +1,881 @@
+{
+ "x^5-4x-7 (S5b)": {
+  "f": [
+   -7,
+   -4,
+   0,
+   0,
+   0,
+   1
+  ],
+  "|G|": 120,
+  "disc": 7240981,
+  "primes": {
+   "11": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "e": 2,
+     "f": 3,
+     "g": 20,
+     "v_disc_N": 60
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 3,
+     "g": 20
+    },
+    "sum_chi1_f_ell": 60,
+    "v_disc_N_reference": 60,
+    "ok": true
+   },
+   "29": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      10,
+      9,
+      12,
+      5
+     ],
+     "e": 2,
+     "f": 2,
+     "g": 30,
+     "v_disc_N": 60
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 2,
+     "g": 30
+    },
+    "sum_chi1_f_ell": 60,
+    "v_disc_N_reference": 60,
+    "ok": true
+   },
+   "22699": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "e": 2,
+     "f": 1,
+     "g": 60,
+     "v_disc_N": 60
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 1,
+     "g": 60
+    },
+    "sum_chi1_f_ell": 60,
+    "v_disc_N_reference": 60,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 37.4,
+  "all_compared_ok": true,
+  "seconds": 37.6
+ },
+ "x^3-x^2-2x-8 (S3)": {
+  "f": [
+   -8,
+   -2,
+   -1,
+   1
+  ],
+  "|G|": 6,
+  "disc": 2012,
+  "primes": {
+   "2": {
+    "v_disc_f": 2,
+    "reference": {
+     "status": "Round 2",
+     "theta": [
+      1,
+      2,
+      3
+     ],
+     "e": 1,
+     "f": 1,
+     "g": 6,
+     "v_disc_N": 0
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 1,
+     "f": 1,
+     "g": 6
+    },
+    "sum_chi1_f_ell": 0,
+    "v_disc_N_reference": 0,
+    "ok": true
+   },
+   "503": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3
+     ],
+     "e": 2,
+     "f": 1,
+     "g": 3,
+     "v_disc_N": 3
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 1,
+     "g": 3
+    },
+    "sum_chi1_f_ell": 3,
+    "v_disc_N_reference": 3,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 5.7,
+  "all_compared_ok": true,
+  "seconds": 5.8
+ },
+ "x^3-x-1 (S3, disc -23)": {
+  "f": [
+   -1,
+   -1,
+   0,
+   1
+  ],
+  "|G|": 6,
+  "disc": 23,
+  "primes": {
+   "23": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3
+     ],
+     "e": 2,
+     "f": 1,
+     "g": 3,
+     "v_disc_N": 3
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 1,
+     "g": 3
+    },
+    "sum_chi1_f_ell": 3,
+    "v_disc_N_reference": 3,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 0.1,
+  "all_compared_ok": true,
+  "seconds": 0.1
+ },
+ "x^3+x^2-2x-1 (C3, 7)": {
+  "f": [
+   -1,
+   -2,
+   1,
+   1
+  ],
+  "|G|": 3,
+  "disc": 49,
+  "primes": {
+   "7": {
+    "v_disc_f": 2,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3
+     ],
+     "e": 3,
+     "f": 1,
+     "g": 1,
+     "v_disc_N": 2
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 3,
+     "f": 1,
+     "g": 1
+    },
+    "sum_chi1_f_ell": 2,
+    "v_disc_N_reference": 2,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 0.1,
+  "all_compared_ok": true,
+  "seconds": 0.1
+ },
+ "x^3-7x+14 (S3, 2 wild)": {
+  "f": [
+   14,
+   -7,
+   0,
+   1
+  ],
+  "|G|": 6,
+  "disc": 3920,
+  "primes": {
+   "2": {
+    "v_disc_f": 4,
+    "reference": {
+     "status": "Round 2",
+     "theta": [
+      1,
+      2,
+      3
+     ],
+     "e": 2,
+     "f": 1,
+     "g": 3,
+     "v_disc_N": 6
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": "wild: A8 tame construction not applicable",
+    "ok": null,
+    "note": "pipeline has no local data here (wild)"
+   },
+   "5": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3
+     ],
+     "e": 2,
+     "f": 1,
+     "g": 3,
+     "v_disc_N": 3
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 1,
+     "g": 3
+    },
+    "sum_chi1_f_ell": 3,
+    "v_disc_N_reference": 3,
+    "ok": true
+   },
+   "7": {
+    "v_disc_f": 2,
+    "reference": {
+     "status": "Round 2",
+     "theta": [
+      1,
+      2,
+      3
+     ],
+     "e": 3,
+     "f": 1,
+     "g": 2,
+     "v_disc_N": 4
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 3,
+     "f": 1,
+     "g": 2
+    },
+    "sum_chi1_f_ell": 4,
+    "v_disc_N_reference": 4,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 0.1,
+  "all_compared_ok": true,
+  "seconds": 0.1
+ },
+ "x^4+x^3+x^2+x+1 (C4)": {
+  "f": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "|G|": 4,
+  "disc": 125,
+  "primes": {
+   "5": {
+    "v_disc_f": 3,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "e": 4,
+     "f": 1,
+     "g": 1,
+     "v_disc_N": 3
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 4,
+     "f": 1,
+     "g": 1
+    },
+    "sum_chi1_f_ell": 3,
+    "v_disc_N_reference": 3,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 0.7,
+  "all_compared_ok": true,
+  "seconds": 0.7
+ },
+ "(x^2-5)(x^2-13) (V4)": {
+  "f": [
+   65,
+   0,
+   -18,
+   0,
+   1
+  ],
+  "|G|": 4,
+  "disc": 4259840,
+  "primes": {
+   "2": {
+    "v_disc_f": 16,
+    "reference": {
+     "status": "Round 2",
+     "theta": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "e": 1,
+     "f": 2,
+     "g": 2,
+     "v_disc_N": 0
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 1,
+     "f": 2,
+     "g": 2
+    },
+    "sum_chi1_f_ell": 0,
+    "v_disc_N_reference": 0,
+    "ok": true
+   },
+   "5": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "e": 2,
+     "f": 2,
+     "g": 1,
+     "v_disc_N": 2
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 2,
+     "g": 1
+    },
+    "sum_chi1_f_ell": 2,
+    "v_disc_N_reference": 2,
+    "ok": true
+   },
+   "13": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "e": 2,
+     "f": 2,
+     "g": 1,
+     "v_disc_N": 2
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 2,
+     "g": 1
+    },
+    "sum_chi1_f_ell": 2,
+    "v_disc_N_reference": 2,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 0.4,
+  "all_compared_ok": true,
+  "seconds": 0.4
+ },
+ "x^5+20x+16 (A5, wild)": {
+  "f": [
+   16,
+   20,
+   0,
+   0,
+   0,
+   1
+  ],
+  "|G|": 60,
+  "disc": 1024000000,
+  "primes": {
+   "2": {
+    "v_disc_f": 16,
+    "reference": "unavailable (explicit N over budget, v > 2)",
+    "compared": false
+   },
+   "5": {
+    "v_disc_f": 6,
+    "reference": "unavailable (explicit N over budget, v > 2)",
+    "compared": false
+   }
+  },
+  "seconds_pipeline": 12.7,
+  "all_compared_ok": true,
+  "seconds": 12.7
+ },
+ "x^5-2x-7 (S5c, 3 tame)": {
+  "f": [
+   -7,
+   -2,
+   0,
+   0,
+   0,
+   1
+  ],
+  "|G|": 120,
+  "disc": 7494933,
+  "primes": {
+   "3": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "restricted (v <= 2, forced by A2)",
+     "e": 2,
+     "f": 3,
+     "g": 20,
+     "v_disc_N": 60
+    },
+    "restricted": true,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 3,
+     "g": 20
+    },
+    "sum_chi1_f_ell": 60,
+    "v_disc_N_reference": 60,
+    "ok": true
+   },
+   "991": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "e": 2,
+     "f": 2,
+     "g": 30,
+     "v_disc_N": 60
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 2,
+     "g": 30
+    },
+    "sum_chi1_f_ell": 60,
+    "v_disc_N_reference": 60,
+    "ok": true
+   },
+   "2521": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "e": 2,
+     "f": 3,
+     "g": 20,
+     "v_disc_N": 60
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 3,
+     "g": 20
+    },
+    "sum_chi1_f_ell": 60,
+    "v_disc_N_reference": 60,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 50.1,
+  "all_compared_ok": true,
+  "seconds": 50.4
+ },
+ "x^4+x+1 (S4b)": {
+  "f": [
+   1,
+   1,
+   0,
+   0,
+   1
+  ],
+  "|G|": 24,
+  "disc": 229,
+  "primes": {
+   "229": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "e": 2,
+     "f": 2,
+     "g": 6,
+     "v_disc_N": 12
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 2,
+     "g": 6
+    },
+    "sum_chi1_f_ell": 12,
+    "v_disc_N_reference": 12,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 1.0,
+  "all_compared_ok": true,
+  "seconds": 1.0
+ },
+ "x^5-5x+12 (D5, wild)": {
+  "f": [
+   12,
+   -5,
+   0,
+   0,
+   0,
+   1
+  ],
+  "|G|": 10,
+  "disc": 64000000,
+  "primes": {
+   "2": {
+    "v_disc_f": 12,
+    "reference": {
+     "status": "Round 2",
+     "theta": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "e": 2,
+     "f": 1,
+     "g": 5,
+     "v_disc_N": 15
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": "wild: A8 tame construction not applicable",
+    "ok": null,
+    "note": "pipeline has no local data here (wild)"
+   },
+   "5": {
+    "v_disc_f": 6,
+    "reference": {
+     "status": "Round 2",
+     "theta": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "e": 10,
+     "f": 1,
+     "g": 1,
+     "v_disc_N": 13
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": "wild: A8 tame construction not applicable",
+    "ok": null,
+    "note": "pipeline has no local data here (wild)"
+   }
+  },
+  "seconds_pipeline": 0.2,
+  "all_compared_ok": true,
+  "seconds": 0.6
+ },
+ "x^4-x-1 (S4)": {
+  "f": [
+   -1,
+   -1,
+   0,
+   0,
+   1
+  ],
+  "|G|": 24,
+  "disc": 283,
+  "primes": {
+   "283": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "e": 2,
+     "f": 1,
+     "g": 12,
+     "v_disc_N": 12
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 1,
+     "g": 12
+    },
+    "sum_chi1_f_ell": 12,
+    "v_disc_N_reference": 12,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 3.8,
+  "all_compared_ok": true,
+  "seconds": 3.8
+ },
+ "x^4-2 (D4, 2 wild)": {
+  "f": [
+   -2,
+   0,
+   0,
+   0,
+   1
+  ],
+  "|G|": 8,
+  "disc": 2048,
+  "primes": {
+   "2": {
+    "v_disc_f": 11,
+    "reference": {
+     "status": "Round 2",
+     "theta": [
+      1,
+      6,
+      6,
+      8
+     ],
+     "e": 8,
+     "f": 1,
+     "g": 1,
+     "v_disc_N": 24
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": "wild: A8 tame construction not applicable",
+    "ok": null,
+    "note": "pipeline has no local data here (wild)"
+   }
+  },
+  "seconds_pipeline": 0.1,
+  "all_compared_ok": true,
+  "seconds": 0.3
+ },
+ "x^5+x^4-4x^3-3x^2+3x+1 (C5)": {
+  "f": [
+   1,
+   3,
+   -3,
+   -4,
+   1,
+   1
+  ],
+  "|G|": 5,
+  "disc": 14641,
+  "primes": {
+   "11": {
+    "v_disc_f": 4,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "e": 5,
+     "f": 1,
+     "g": 1,
+     "v_disc_N": 4
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 5,
+     "f": 1,
+     "g": 1
+    },
+    "sum_chi1_f_ell": 4,
+    "v_disc_N_reference": 4,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 2.8,
+  "all_compared_ok": true,
+  "seconds": 2.8
+ },
+ "x^5-x-1 (S5)": {
+  "f": [
+   -1,
+   -1,
+   0,
+   0,
+   0,
+   1
+  ],
+  "|G|": 120,
+  "disc": 2869,
+  "primes": {
+   "19": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "e": 2,
+     "f": 3,
+     "g": 20,
+     "v_disc_N": 60
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 3,
+     "g": 20
+    },
+    "sum_chi1_f_ell": 60,
+    "v_disc_N_reference": 60,
+    "ok": true
+   },
+   "151": {
+    "v_disc_f": 1,
+    "reference": {
+     "status": "Dedekind",
+     "theta": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "e": 2,
+     "f": 2,
+     "g": 30,
+     "v_disc_N": 60
+    },
+    "restricted": false,
+    "compared": true,
+    "pipeline": {
+     "e": 2,
+     "f": 2,
+     "g": 30
+    },
+    "sum_chi1_f_ell": 60,
+    "v_disc_N_reference": 60,
+    "ok": true
+   }
+  },
+  "seconds_pipeline": 29.8,
+  "all_compared_ok": true,
+  "seconds": 30.0
+ }
+}
