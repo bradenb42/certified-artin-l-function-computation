@@ -23,7 +23,7 @@ jobs:
           cat ._stage/theory5/subfield-zeta.*.b64 | base64 -d > docs/theory/subfield-zeta.md
           cat ._stage/theory5/certificate.*.b64 | base64 -d > docs/theory/certificate.md
           cat ._stage/theory5/verifier.*.b64 | base64 -d > docs/theory/verifier.md
-          cat ._stage/theory5/cost.*.b64 | base64 -d > docs/theory/cost.md
+          cat ._stage/theory5/cost.00.b64 ._stage/theory5/cost.01.b64 ._stage/theory5/cost.02a.b64 ._stage/theory5/cost.02b.b64 ._stage/theory5/cost.03.b64 | base64 -d > docs/theory/cost.md
 
           test "$(git hash-object docs/theory/subfield-zeta.md)" = "8f589e72bc33650d1b98385ad7ac38ac60c2bf29"
           test "$(git hash-object docs/theory/certificate.md)" = "8d0fe90e60b7b6a8fb85d5751c296bfbf926cee9"
@@ -49,6 +49,8 @@ jobs:
               "Reading the table for the project's target": "For the project's target",
               'unless $\\mathfrak{f}_{\\max}$ is enormous': 'unless $\\mathfrak{f}_{\\max}$ is sufficiently large',
               'are capped by falling back to the light mode': 'are capped by using the light mode',
+              'at the price of the weaker guarantee stated there': 'with the weaker guarantee stated there',
+              'simpler, the certificate records': 'alternatively, the certificate records',
           }
 
           for path in sorted(Path('docs/theory').glob('*.md')):
@@ -56,7 +58,7 @@ jobs:
                   continue
               text = path.read_text(encoding='utf-8')
               text = boilerplate.sub('', text, count=1)
-              # Remove authoring/meta commentary rather than mathematical content.
+              # Remove drafting/meta commentary, without changing mathematical claims.
               text = re.sub(
                   r'^The intended phrase "errors that cancel in a single functional equation but not across the multiplicities".*?\n\n',
                   '', text, flags=re.M | re.S,
@@ -67,13 +69,13 @@ jobs:
           PY
 
           echo "Remaining style-word candidates (for review):"
-          grep -RniE 'pretentious|self-deprecat|theatrical|intended phrase|cheap blocks|the hard condition|the price is paid|enormous|obvious|trivial\.|of course|fortunately|unfortunately|merely|simply|naive|brute[- ]force|elegant|miracle|surprising' docs/theory/*.md || true
+          grep -RniE 'One of the derivations behind|intended phrase|cheap blocks|the hard condition|the price is paid|enormous|obvious|of course|fortunately|unfortunately|naive|naïve|brute[- ]force|elegant|miracle|surprising|crude|ugly|wasteful|self-deprecat|pretentious|theatrical' docs/theory/*.md || true
 
           if grep -Rni 'One of the derivations behind' docs/theory/*.md; then
             echo 'boilerplate remains' >&2
             exit 1
           fi
-          if grep -RniE 'intended phrase|cheap blocks|the hard condition|the price is paid' docs/theory/*.md; then
+          if grep -RniE 'intended phrase|cheap blocks|the hard condition|the price is paid|enormous|falling back to the light mode|at the price of the weaker guarantee' docs/theory/*.md; then
             echo 'targeted style phrases remain' >&2
             exit 1
           fi
