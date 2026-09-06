@@ -1,0 +1,50 @@
+name: Assemble derivations
+
+on:
+  push:
+    paths:
+      - ".github/workflows/assemble-derivations.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct and verify derivations
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p docs/theory
+
+          base64 -d ._derivation_upload/character-table.md.gz.b64 | gzip -d > docs/theory/character-table.md
+          echo "7bd9f2ee970eafd8a45798dc3b1c66790185dba3f63dc6b757293aca5723a6a9  docs/theory/character-table.md" | sha256sum -c -
+
+          base64 -d ._derivation_upload/ramified-primes.md.gz.b64 | gzip -d > docs/theory/ramified-primes.md
+          echo "73038cc3e67d559558153ba2b7a99aadd6b435297e2b1ffb861ae9972ee37feb  docs/theory/ramified-primes.md" | sha256sum -c -
+
+          base64 -d ._derivation_upload/precision-policy.md.gz.b64 | gzip -d > docs/theory/precision-policy.md
+          echo "5c1ee9f185c3f2b61a8853b733b50605d6efefd0c5f1d06ce093559f2edb8d14  docs/theory/precision-policy.md" | sha256sum -c -
+
+          base64 -d ._derivation_upload/rational-classes.md.gz.b64 | gzip -d > docs/theory/rational-classes.md
+          echo "b941ccdd984115b7d9259bf677378f013bfd421692744beb61025cba8d1c9c20  docs/theory/rational-classes.md" | sha256sum -c -
+
+      - name: Commit derivations and cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf ._derivation_upload
+          rm -f .github/workflows/assemble-derivations.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add initial derivation pages"
+          git push origin HEAD:main
