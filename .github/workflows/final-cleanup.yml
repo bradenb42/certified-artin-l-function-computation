@@ -27,8 +27,12 @@ jobs:
           # Keep the theory corpus self-contained inside the repository.
           for path in sorted(Path('docs/theory').glob('*.md')):
               text = path.read_text(encoding='utf-8')
+              # Real cross-references become relative repository links.
               text = re.sub(r'https://claude\.ai/chat/([A-Za-z0-9-]+\.md)', r'\1', text)
               text = re.sub(r'https://claude\.ai/([A-Za-z0-9-]+\.md)', r'\1', text)
+              # A few pasted mathematical expressions were accidentally rendered as
+              # Claude links; preserve their visible text and drop only the bad target.
+              text = re.sub(r'\[([^\]]+)\]\(https://claude\.ai(?:/chat)?/[^)]+\)', r'\1', text)
               text = text.replace('artin/rootnumber.py', 'artin/rootnumbers.py')
               path.write_text(text, encoding='utf-8')
 
