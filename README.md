@@ -114,6 +114,7 @@ See [docs/validation.md](docs/validation.md).
 - [docs/validation.md](docs/validation.md) — the cross-checks and their results
 - [docs/performance.md](docs/performance.md) — where the time goes
 - [docs/scope.md](docs/scope.md) — what is covered and what is not
+- [docs/theory/](docs/theory/README.md) — the derivations and proofs implemented by the code
 
 ## Tests
 
@@ -135,6 +136,7 @@ artin/            the computation, one module per piece of mathematics
 artinverify/      the independent certificate checker
 examples/         runnable scripts, sample certificates, recorded results
 docs/             design, verification, validation, performance, scope
+  theory/         derivations and proofs underlying each computational stage
 tests/            the test suite
 ```
 
