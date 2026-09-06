@@ -10,7 +10,8 @@ the factor data already force, and the run records that it did so.
 """
 from __future__ import annotations
 import os, tempfile, time, json
-from math import gcd
+from math import gcd, lcm
+from ._arith import multiplicative_order
 
 from .run import run_pipeline
 from .certificate import load_json
@@ -19,17 +20,6 @@ from .invariants import Invariant
 from .resolvent import roots_at, resolvent, evaluate_permuted, squarefree_certificate
 from .ramified import discriminant, factor_mod, dedekind_criterion, decide_prime_for_factor, valuation, factorint
 from .perm import PermGroup, from_json, symmetric, alternating, from_cycles
-
-def lcm(a, b):
-    return a * b // gcd(a, b)
-
-def mult_order(a, m):
-    if m == 1:
-        return 1
-    k, x = 1, a % m
-    while x != 1:
-        x = x * a % m; k += 1
-    return k
 
 def group_generators(name, n):
     S = symmetric(n)
@@ -93,7 +83,7 @@ def restricted_reference(A2_dec, ell, order):
     F = 1
     for e, fd in A2_dec:
         F = lcm(F, fd)
-    F = lcm(F, mult_order(ell, E))
+    F = lcm(F, multiplicative_order(ell, E))
     return {"status": "restricted (v <= 2, forced by the factor data)", "e": E, "f": F, "g": order // (E * F), "v_disc_N": (order // (E * F)) * F * (E - 1)}
 
 def check_polynomial(f, gens, X=100, log=print, workdir=None, budget_degree=120):

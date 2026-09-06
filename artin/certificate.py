@@ -9,6 +9,7 @@ stage.  Permutations are 1-indexed image lists; composition is
 from __future__ import annotations
 import json
 import os
+import tempfile
 from fractions import Fraction
 
 from .perm import PermGroup, from_json, to_json
@@ -55,8 +56,24 @@ def _json_default(o):
     raise TypeError(f"not serializable: {type(o)}")
 
 def dump_json(obj, path):
-    with open(path, "w") as fh:
-        json.dump(obj, fh, indent=1, default=_json_default)
+    directory = os.path.dirname(os.path.abspath(path))
+    fd, temporary_path = tempfile.mkstemp(
+        dir=directory,
+        prefix=f".{os.path.basename(path)}.",
+        suffix=".tmp",
+    )
+    try:
+        with os.fdopen(fd, "w") as fh:
+            json.dump(obj, fh, indent=1, default=_json_default)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(temporary_path, path)
+    except BaseException:
+        try:
+            os.unlink(temporary_path)
+        except FileNotFoundError:
+            pass
+        raise
 
 def load_json(path):
     with open(path) as fh:

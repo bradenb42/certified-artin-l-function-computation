@@ -1,4 +1,6 @@
-import sys,json,time; sys.path.insert(0,'/home/claude/b1')
+import json
+import sys
+import time
 from artin.check_splitting_field import check_polynomial, group_generators
 sample = {
  "x^3-x^2-2x-8 (S3)": ([-8,-2,-1,1], ("S",3)),
@@ -13,9 +15,6 @@ sample = {
  "x^5+x^4-4x^3-3x^2+3x+1 (C5)": ([1,3,-3,-4,1,1], ("C",5)),
  "x^5-5x+12 (D5, wild)": ([12,-5,0,0,0,1], ("D",5)),
  "x^5+20x+16": ([16,20,0,0,0,1], ("A",5)),
- "x^5-4x-7 (S5b)": ([-7,-4,0,0,0,1], ("S",5)),
- "x^5-2x-7 (S5c, 3 tame)": ([-7,-2,0,0,0,1], ("S",5)),
- "x^4+x+1 (S4b)": ([1,1,0,0,1], ("S",4)),
  "x^5-4x-7 (S5b)": ([-7,-4,0,0,0,1], ("S",5)),
  "x^5-2x-7 (S5c, 3 tame)": ([-7,-2,0,0,0,1], ("S",5)),
  "x^4+x+1 (S4b)": ([1,1,0,0,1], ("S",4)),

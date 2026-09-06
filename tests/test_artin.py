@@ -1,12 +1,11 @@
-import json, math, os, sys, tempfile
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+import json, math, os, tempfile
 import pytest
 from artin.perm import PermGroup, symmetric, alternating, from_cycles
 from artin.cyclo import Cyc
 from artin.chartable import CharacterTable, verify_certificate
 from artin.schur import candidate_pairs, schur_data, build_model
 from artin.ramified import ramified_primes, verify_ramified
-from artin.run import run_pipeline
+from artin.run import resolve_config, run_pipeline
 from artin.verify import verify_run
 
 def q8():
@@ -22,6 +21,10 @@ def q8():
         return ('-' if s < 0 else '') + r
     perm = lambda x: tuple(q.index(qmul(x, y)) for y in q)
     return PermGroup([perm('i'), perm('j')])
+
+def test_config_rejects_unknown_options():
+    with pytest.raises(ValueError, match="unknown option"):
+        resolve_config({"options": {"class_bound": 100}})
 
 def test_perm_orders():
     for n in range(3, 9):

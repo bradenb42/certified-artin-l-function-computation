@@ -8,6 +8,8 @@ records agree.
 from __future__ import annotations
 import random
 from math import gcd
+from ._arith import multiplicative_order
+from .chartable import is_prime
 
 from .invariants import orbit_sum, set_product, stabilizer_in, Invariant
 from .padic import count_Zl_roots, frobenius_perm, PrecisionExhausted
@@ -16,10 +18,6 @@ from .precision import Policy
 from .ramified import discriminant, valuation, factorint
 from .resolvent import (coset_transversal, roots_at, resolvent, invariant_value,
                         alignment_single_level, evaluate_permuted, squarefree_certificate, divides_disc)
-
-def is_prime(n):
-    from .chartable import is_prime as ip
-    return ip(n)
 
 def default_chain(G: PermGroup):
     """The one-level chain S_n > G with the orbit-sum invariant on the
@@ -107,7 +105,6 @@ def numbering_prime(Delta, avoid=(), coprime_to=1, orders=()):
     """Smallest odd prime not dividing Delta (nor coprime_to, e.g. the exponent of G), not in avoid,
     and, when possible within the first 300 candidates, with Phi_o irreducible mod p for every o in
     orders."""
-    from .twisted import multiplicative_order
     from .cyclo import phi as _phi
     def ok_basic(p):
         return Delta % p and coprime_to % p and p not in avoid

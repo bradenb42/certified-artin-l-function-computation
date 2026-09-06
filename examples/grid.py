@@ -6,8 +6,11 @@ tables and verification defects.  Regenerates every table:
 
     python examples/grid.py <outdir> [names...]
 """
-import sys, os, json, time, shutil
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+import json
+import os
+import shutil
+import sys
+import time
 from artin.run import run_pipeline
 from artin.certificate import load_json
 from artin.ramified import discriminant, factorint
