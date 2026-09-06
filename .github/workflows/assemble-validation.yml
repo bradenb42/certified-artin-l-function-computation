@@ -1,0 +1,52 @@
+name: Assemble validation sources
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '._stage/check_abelian.py.gz.b64'
+      - '._stage/check_newforms.py.gz.b64'
+      - '.github/workflows/assemble-validation.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct exact sources
+        run: |
+          python - <<'PY'
+          import base64, gzip, hashlib, pathlib, shutil
+          items = [
+              ('._stage/check_abelian.py.gz.b64', 'artin/check_abelian.py', 'e4affc2f9eefc79b5bb15daf3e4f4fde8f73d96a'),
+              ('._stage/check_newforms.py.gz.b64', 'artin/check_newforms.py', '4d480b8bb38b148690aab5e2e757b983f537ad82'),
+          ]
+          for src, dst, expected in items:
+              raw = gzip.decompress(base64.b64decode(pathlib.Path(src).read_text()))
+              gitsha = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+              if gitsha != expected:
+                  raise SystemExit(f'{dst}: SHA mismatch {gitsha} != {expected}')
+              pathlib.Path(dst).write_bytes(raw)
+          shutil.copyfile('artin/rootnumbers.py', 'artin/rootnumber.py')
+          PY
+      - name: Syntax check
+        run: |
+          python -m py_compile \
+            artin/stages_rootnumbers.py \
+            artin/stages_analytic.py \
+            artin/stages_falsifier.py \
+            artin/check_splitting_field.py \
+            artin/check_abelian.py \
+            artin/check_newforms.py \
+            artin/rootnumber.py
+      - name: Commit clean tree
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add artin/check_abelian.py artin/check_newforms.py artin/rootnumber.py
+          git rm -r ._stage .github/workflows/assemble-validation.yml
+          git commit -m 'Add analytic stages and validation checks'
+          git push
