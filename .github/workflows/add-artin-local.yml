@@ -19,12 +19,13 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import gzip, hashlib, py_compile
+          import base64, gzip, hashlib, py_compile
           from pathlib import Path
-          src = Path('._upload/filtration.py.gz').read_bytes()
-          raw = gzip.decompress(src)
-          got = hashlib.sha1(raw).hexdigest()
-          assert got == '19130f0b24304712c22b4d98f20905e2ad41366a', got
+          text = ''.join(Path(f'._upload/filtration.part{i:02d}').read_text() for i in range(7))
+          gz = base64.b64decode(text, validate=True)
+          assert hashlib.sha1(gz).hexdigest() == '5b15606fa6eeac463f644da994a2354746ad9ce3'
+          raw = gzip.decompress(gz)
+          assert hashlib.sha1(raw).hexdigest() == '19130f0b24304712c22b4d98f20905e2ad41366a'
           Path('artin/filtration.py').write_bytes(raw)
           for p in ['artin/classes.py','artin/resolvent.py','artin/twisted.py','artin/direct.py','artin/matching.py','artin/local.py','artin/filtration.py']:
               py_compile.compile(p, doraise=True)
