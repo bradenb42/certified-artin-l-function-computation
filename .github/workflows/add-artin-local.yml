@@ -1,0 +1,45 @@
+name: Add Artin class and local modules
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-artin-local.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruct and verify source
+        shell: bash
+        run: |
+          python - <<'PY'
+          import gzip, hashlib, py_compile
+          from pathlib import Path
+          src = Path('._upload/filtration.py.gz').read_bytes()
+          raw = gzip.decompress(src)
+          got = hashlib.sha1(raw).hexdigest()
+          assert got == '19130f0b24304712c22b4d98f20905e2ad41366a', got
+          Path('artin/filtration.py').write_bytes(raw)
+          for p in ['artin/classes.py','artin/resolvent.py','artin/twisted.py','artin/direct.py','artin/matching.py','artin/local.py','artin/filtration.py']:
+              py_compile.compile(p, doraise=True)
+              print(p, hashlib.sha1(Path(p).read_bytes()).hexdigest(), Path(p).stat().st_size)
+          PY
+      - name: Commit source and clean staging
+        shell: bash
+        run: |
+          rm -rf ._upload
+          rm -f .github/workflows/add-artin-local.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+          find artin -type d -name __pycache__ -prune -exec rm -rf {} +
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add Frobenius class and local arithmetic modules'
+          git push
