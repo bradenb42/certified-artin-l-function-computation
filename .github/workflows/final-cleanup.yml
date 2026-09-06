@@ -36,14 +36,22 @@ jobs:
               text = text.replace('artin/rootnumber.py', 'artin/rootnumbers.py')
               path.write_text(text, encoding='utf-8')
 
-          # Use one canonical root-number implementation module.
-          stage = Path('artin/stages_rootnumbers.py')
-          text = stage.read_text(encoding='utf-8')
-          old = 'from .rootnumber import TameRootNumbers, lcm'
-          new = 'from .rootnumbers import TameRootNumbers, lcm'
-          if old not in text:
-              raise SystemExit('expected rootnumber import not found')
-          stage.write_text(text.replace(old, new), encoding='utf-8')
+          # Use one canonical root-number implementation module everywhere.
+          replacements = {
+              Path('artin/stages_rootnumbers.py'): (
+                  'from .rootnumber import TameRootNumbers, lcm',
+                  'from .rootnumbers import TameRootNumbers, lcm',
+              ),
+              Path('artin/verify.py'): (
+                  'from .rootnumber import sqrt_prime',
+                  'from .rootnumbers import sqrt_prime',
+              ),
+          }
+          for path, (old, new) in replacements.items():
+              text = path.read_text(encoding='utf-8')
+              if old not in text:
+                  raise SystemExit(f'expected import not found in {path}: {old}')
+              path.write_text(text.replace(old, new), encoding='utf-8')
 
           # Keep README test/install instructions aligned with pyproject and CI.
           readme = Path('README.md')
