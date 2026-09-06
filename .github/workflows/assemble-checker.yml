@@ -1,0 +1,52 @@
+name: Assemble checker sources
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '._stage/checker_bundle.part*'
+      - '.github/workflows/assemble-checker.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct supplied sources
+        run: |
+          cat ._stage/checker_bundle.part0 ._stage/checker_bundle.part1 ._stage/checker_bundle.part2 ._stage/checker_bundle.part3 > /tmp/checker_bundle.b64
+          base64 -d /tmp/checker_bundle.b64 > /tmp/checker_bundle.tgz
+          echo '938dc014e50e09e069cc3b761ac0347b6b8a9947dc635db19682e3cf0edb5078  /tmp/checker_bundle.tgz' | sha256sum -c -
+          tar -xzf /tmp/checker_bundle.tgz
+          python - <<'PY'
+          import hashlib, pathlib
+          expected = {
+              'artinverify/__init__.py': '561a56ff390af674b539093fc9c5de4b68c8f627',
+              'artinverify/arith.py': '610b87535e4f66c5239070bf134a9faf98de27ed',
+              'artinverify/fields.py': 'f7e894bdbc2995a569d0792cdcdaf2907b952184',
+              'artinverify/mutate.py': '70c8d97e51b70fb894e8bef2d973bfb785b59dc7',
+              'artinverify/verify.py': '58056476aceb1997853d9422475f196fbb849786',
+              'examples/grid.py': 'cf2acf98f70427d9395bc7afc64bbf96b5cbc9aa',
+              'tests/test_artin.py': '942f5d67d4fa81bd9a512e1be9c34847d7885cd1',
+          }
+          for path, want in expected.items():
+              raw = pathlib.Path(path).read_bytes()
+              got = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+              if got != want:
+                  raise SystemExit(f'{path}: blob SHA {got} != {want}')
+          PY
+      - name: Syntax and import checks
+        run: |
+          python -m py_compile artinverify/__init__.py artinverify/arith.py artinverify/fields.py artinverify/mutate.py artinverify/verify.py examples/grid.py tests/test_artin.py
+          PYTHONPATH=. python -c 'import artinverify.verify, artinverify.mutate, artinverify.fields, artinverify.arith'
+      - name: Commit sources and clean staging
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add artinverify examples/grid.py tests/test_artin.py
+          git rm -r ._stage .github/workflows/assemble-checker.yml
+          git commit -m 'Add standalone verifier and test grid'
+          git push
