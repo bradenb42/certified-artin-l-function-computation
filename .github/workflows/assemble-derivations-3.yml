@@ -1,0 +1,57 @@
+name: Assemble derivations 3
+on:
+  push:
+    paths:
+      - '.github/workflows/assemble-derivations-3.yml'
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruct exact derivation sources
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64, gzip, hashlib
+
+          items = [
+              ('01', 'docs/theory/well-definedness.md', 'f23088205e15915107f6a5cd8a0f2884ba092055153832c18bc7127e12baec00', 'f7f38c176d18e724ed193ba792a53fa064c3eeb2'),
+              ('02', 'docs/theory/ramification-filtration.md', '7621492f5cb83dca8fb94843301ec6838aa6d1b54f1630ee953c10b35cab1fd9', '4d1b73780a03366b619ccff6440d1a639e0c1cd1'),
+              ('03', 'docs/theory/filtration-uniqueness.md', '8a42ebd3a30180d775c2693bed7586c92516d4ffe59934d68c24249c8e67693f', '5779fe4fa98a236ce7775846479a49b136d7c7b1'),
+              ('04', 'docs/theory/conductor-exponents.md', 'aff1ffb204b1d35913a6f013c37c4e0b5e467148f3cfd2779a0a418c15bfd1ac', '68180a837f41dccd78d670e35bd77f3fe8df4370'),
+              ('05', 'docs/theory/global-conductor.md', '7b0ba7aaf0c4a1ab1cdffe0536d86ac141b791f8490ff954a4b2a82e81bd8c9b', 'dc15c7e682eb31f23624b211c4c1fccffae16367'),
+              ('06', 'docs/theory/euler-factors.md', '69f9fef57090de9086f557f5e8aa98cb037025c0a889e000a38348679dadc711', '6d304a3910488a02da750c03874dd8fd4245614f'),
+          ]
+          stage = Path('._stage/deriv3')
+          for prefix, dst, expected_sha256, expected_git in items:
+              parts = sorted(stage.glob(f'{prefix}_*.b64'))
+              if not parts:
+                  raise SystemExit(f'missing chunks for {prefix}')
+              encoded = ''.join(p.read_text() for p in parts)
+              raw = gzip.decompress(base64.b64decode(encoded, validate=True))
+              got_sha256 = hashlib.sha256(raw).hexdigest()
+              got_git = hashlib.sha1(f'blob {len(raw)}\0'.encode() + raw).hexdigest()
+              if got_sha256 != expected_sha256:
+                  raise SystemExit(f'{dst}: sha256 mismatch {got_sha256}')
+              if got_git != expected_git:
+                  raise SystemExit(f'{dst}: git blob mismatch {got_git}')
+              out = Path(dst)
+              out.parent.mkdir(parents=True, exist_ok=True)
+              out.write_bytes(raw)
+              print(dst, len(raw), got_git)
+          PY
+      - name: Commit derivation pages and cleanup
+        shell: bash
+        run: |
+          rm -rf ._stage/deriv3
+          rm .github/workflows/assemble-derivations-3.yml
+          git add -A
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Add ramification and Euler derivations'
+          git push
