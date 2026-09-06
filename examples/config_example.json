@@ -1,0 +1,5 @@
+{
+ "descent": "examples/descent_x5-x-1.json",
+ "run_dir": "runs/x5-x-1",
+ "options": {"model_dim_limit": 200, "compute_models": true, "seed": 0}
+}
