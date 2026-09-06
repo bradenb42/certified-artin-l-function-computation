@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying paper."
+title: "Certified Artin L-function computation"
+type: software
+authors:
+  - given-names: "Braden"
+    family-names: "Bost"
+version: "0.1.0"
+repository-code: "https://github.com/bradenb42/certified-artin-l-function-computation"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Certified Computation of Artin L-functions from a polynomial"
+  authors:
+    - given-names: "Braden"
+      family-names: "Bost"
+  year: 2026
