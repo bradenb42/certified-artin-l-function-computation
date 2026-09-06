@@ -140,6 +140,10 @@ docs/             design, verification, validation, performance, scope
 tests/            the test suite
 ```
 
+## Citation
+
+Please cite the accompanying paper, **Certified Computation of Artin L-functions from a polynomial**. Machine-readable citation metadata are provided in [CITATION.cff](CITATION.cff).
+
 ## Licence
 
 [MIT](LICENSE).
