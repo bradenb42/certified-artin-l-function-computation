@@ -1,0 +1,73 @@
+name: Add Artin core modules
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-artin-core.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  add-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruct and verify source files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import base64, gzip, hashlib, py_compile
+
+          expected = {
+              'run.py': '3633a1d933ad8e08c81c600cf3e5fc67cccf3a24',
+              'verify.py': '4d4b1dfc14c250df87b8bf953224d85581277643',
+              'cyclo.py': '23f6562fa83fd7cb47721a0959c975911ed61c78',
+              'perm.py': 'd4f0c5fabce6f43d537854677b92cd5413df6143',
+          }
+
+          out = Path('artin')
+          out.mkdir(exist_ok=True)
+          for name, sha1 in expected.items():
+              encoded = Path(f'._upload/{name}.gz.b64').read_text()
+              raw = gzip.decompress(base64.b64decode(encoded, validate=True))
+              actual = hashlib.sha1(raw).hexdigest()
+              assert actual == sha1, (name, actual, sha1)
+              (out / name).write_bytes(raw)
+
+          init = '''"""Artin L-functions of a number field's Galois closure.
+
+          Given a monic separable integer polynomial f and generators of its Galois
+          group G as permutations of the roots, the package computes, for every
+          irreducible character chi of G: the conductor, the Euler factors, the Gamma
+          factor and the root number of L(s, chi), together with a certificate that a
+          separate program can check.
+          """
+          __version__ = "0.1.0"
+          '''
+          # Remove heredoc indentation while preserving the supplied text.
+          import textwrap
+          (out / '__init__.py').write_text(textwrap.dedent(init), encoding='utf-8')
+
+          for name in ['__init__.py', 'run.py', 'verify.py', 'cyclo.py', 'perm.py']:
+              py_compile.compile(str(out / name), doraise=True)
+          print('all five modules reconstructed and syntax-checked')
+          PY
+      - name: Commit source files and clean staging
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf ._upload
+          rm -f .github/workflows/add-artin-core.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add initial Artin package modules'
+          git push
