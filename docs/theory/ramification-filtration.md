@@ -1,7 +1,5 @@
 # The ramification filtration of $L=\mathrm{Split}(f/\mathbb{Q}\_\ell)$
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $L$ and $D=\mathrm{Gal}(L/\mathbb{Q}*\ell)\le S\_n$ (in the $\ell$-adic numbering) from* [*local Galois groups*](https://claude.ai/chat/local-galois-groups.md)*, with the tower representation of $L$; $\nu=v*\ell(\mathrm{disc}f)$; $v\_L$ the normalized valuation of $L$ ($v\_L(\varpi\_L)=1$), $e=e(L)$, $f=f(L)$, $k\_L=\mathbb{F}*{\ell^f}$. For $\sigma\in D$ put $i\_L(\sigma)=\min*{x\in\mathcal{O}*L}v\_L(\sigma x-x)\in\mathbb{Z}*{\ge0}\cup{\infty}$ and, for $i\ge-1$, $D\_i={\sigma:\ i\_L(\sigma)\ge i+1}$ (lower numbering; $D\_{-1}=D$). For a subgroup $H\le D$ and $K'=L^H$, $\mathcal{O}*{K'}=\mathbb{Z}*\ell[y]$ for some $y$ (local rings of integers are monogenic). Everything is transported to the global numbering by [matching](https://claude.ai/chat/matching.md) to [well-definedness](https://claude.ai/chat/well-definedness.md) and is independent of choices up to $G$-conjugacy ([well-definedness](https://claude.ai/chat/well-definedness.md) Theorem 3.3).
 
 ## 1. Inertia, Frobenius, wild inertia

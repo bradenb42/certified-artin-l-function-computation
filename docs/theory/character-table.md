@@ -1,7 +1,5 @@
 # Character table, Schur indices, matrix models, and model-independence of the L-function data
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Conventions.** $G\le S\_n$ is given by generators acting on the fixed numbering of the $p$-adic roots. From the generators compute a base and strong generating set, $|G|$, the exponent $e=\exp(G)$, the classes $C\_1={1},\dots,C\_r$ with representatives $g\_k$, sizes $|C\_k|$, and the involution $k\mapsto k'$ with $g\_k^{-1}\in C\_{k'}$. Class identification (deciding which $C\_k$ contains a given $x\in G$) is by cycle-type fingerprint followed by conjugacy backtrack. The descent certificate is not consumed in this step beyond having proved that $G$ is the Galois group. $K=\mathbb{Q}(\chi)$ throughout; $\zeta\_m$ is a primitive $m$-th root of unity.
 
 ## 1. Class algebra and structure constants

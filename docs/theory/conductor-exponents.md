@@ -1,7 +1,5 @@
 # Artin conductor exponents and the conductor to discriminant acceptance test
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $\ell$ ramified in $N$; $D=D\_\ell\le G$ with lower filtration $D\_{-1}=D\supseteq D\_0=I\supseteq D\_1\supseteq\cdots$ in the global numbering ([matching](https://claude.ai/chat/matching.md) to [filtration uniqueness](https://claude.ai/chat/filtration-uniqueness.md)), $f=[D\:D\_0]$, $e=|D\_0|$, $L=N\_{\mathfrak{L}}$ the completion, $i\_L$ the function of [the filtration](https://claude.ai/chat/ramification-filtration.md), $\delta(L)=\sum\_{\sigma\ne1}i\_L(\sigma)=\sum\_{i\ge0}(|D\_i|-1)=v\_L(\mathfrak{D}*{L/\mathbb{Q}*\ell})$. Characters $\chi\in\mathrm{Irr}(G)$ from [the character table](https://claude.ai/chat/character-table.md); for a class function $\chi$ of $G$ and a subgroup $D\_i$, $\langle\chi|*{D\_i},1\rangle=\frac{1}{|D\_i|}\sum*{\sigma\in D\_i}\chi(\sigma)$, which for a character is $\dim V^{D\_i}$.
 
 ## 1. The Artin character and the exponent formula

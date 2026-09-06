@@ -1,7 +1,5 @@
 # External correctness checks
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 The artifact produced by [the character table](https://claude.ai/chat/character-table.md) to [the verifier](https://claude.ai/chat/verifier.md) for a monic separable $f\in\mathbb{Z}[x]$ with proven Galois group $G$ must satisfy the following three checks, each against an independent description of the same outputs. A check applies to $f$ only when $f$ lies in the corresponding family; the artifact records which checks applied and whether they passed.
 
 ## Check 1. Abelian $G$, class field theory

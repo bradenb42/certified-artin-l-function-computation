@@ -1,7 +1,5 @@
 # The Euler factor at a ramified prime
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $\ell$ ramified; $D=D\_\ell\le G$, $I=I\_\ell=(D\_\ell)*0$, $f=[D\:I]$, in the global numbering (*[*matching*](https://claude.ai/chat/matching.md) *to* [*the filtration*](https://claude.ai/chat/ramification-filtration.md)*); $\chi\in\mathrm{Irr}(G)$ with $K=\mathbb{Q}(\chi)$; a model $\rho\:G\to\mathrm{GL}*{d}(\mathcal{O}*F)$ of trace $m\chi$ from* [*the character table*](https://claude.ai/chat/character-table.md) *§4 ($F\supseteq K$ cyclotomic, $m=m*\chi$ or any multiple; $m=1$ when $\chi$ is realizable over $F$), acting on $V=F^d$; $V\_\chi$ denotes an abstract representation with character $\chi$. The Euler factor is
 
 $$L\_\ell(s,\chi)=P\_\ell(\chi;\ell^{-s})^{-1},\qquad P\_\ell(\chi;T)=\det\big(1-\rho\_\chi(\mathrm{Fr}*\ell),T\ \big|\ V*\chi^{I\_\ell}\big),$$

@@ -1,7 +1,5 @@
 # The direct route for expensive blocks
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $\ell\nmid\mathrm{disc}f$; $\lambda\vdash n$ is the block of $\mathrm{Frob}*\ell$ (cycle type of $f\bmod\ell$), $r=r*\lambda=\mathrm{lcm}(\lambda)$ the order of that cycle type; $m=\exp G$; $t$ a base of $G$ and $m\_t$ its monomial ([separating subgroups](https://claude.ai/chat/separating-subgroups.md) §3); $(G\_i,F\_i,c\_i,m\_i)*{i=1..t}$ the certificate chain (*[*the precision policy*](https://claude.ai/chat/precision-policy.md) *§1, §4); $\mathfrak{L}\mid\ell$ a prime of $N(\zeta\_m)$ and $\lambda\_0=\mathfrak{L}\cap\mathbb{Z}[\zeta\_m]$. Conventions: $(\tau P)(x)=P(x*{\tau(1)},\dots,x\_{\tau(n)})$, a left action of $S\_n$, and $g(P(\alpha))=(gP)(\alpha)$ for $g\in G$. For a class function $\theta\:G\to\mathbb{Z}[\zeta\_m]$ the *orbit sum* is
 $$F\_\theta=\sum\_{\sigma\in G}\theta(\sigma),\sigma!\cdot m\_t\ \in\ \mathbb{Z}[\zeta\_m][x\_1,\dots,x\_n].$$
 

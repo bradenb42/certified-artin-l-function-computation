@@ -1,7 +1,5 @@
 # Precision management: one policy for every prime
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $f\in\mathbb{Z}[x]$ monic separable of degree $n$, roots $\alpha\_1,\dots,\alpha\_n\in N\subset\bar{\mathbb{Q}}$, $\Delta=|\mathrm{disc}f|$, $G=\mathrm{Gal}(N/\mathbb{Q})\le S\_n$ with respect to the numbering fixed by the embedding $\iota\_p\:N\to\bar{\mathbb{Q}}*p$ at the numbering prime $p\nmid\Delta$. A root bound is any $R\ge1$ with $|\sigma(\alpha\_j)|\le R$ for all $j$ and all complex embeddings $\sigma$; Cauchy's $R=1+\max\_i|a\_i|$ for $f=x^n+\sum a\_ix^{n-i}$ is one. For $F\in\mathbb{Z}[x\_1,\dots,x\_n]$ write $|F|1$ for the sum of the absolute values of its coefficients and, for $\tau\in S\_n$, $F(\tau\alpha)=F(\alpha{\tau(1)},\dots,\alpha*{\tau(n)})$. If invariants are evaluated on Tschirnhaus-transformed roots $T(\alpha\_j)$, replace $F$ by $F\circ T$ throughout; $|F\circ T|\_1\le|F|\_1|T|\_1^{\deg F}$ and $\deg(F\circ T)=\deg F\deg T$.
 
 Valuations at a prime $\ell$ are normalized by $v(\ell)=1$ and extended to $\bar{\mathbb{Q}}*\ell$; "precision $k$ at $\ell$" means every quantity is known modulo elements of valuation $\ge k$. In a field $L\supseteq\mathbb{Q}*\ell$ with ramification index $e$ this is $ek$ digits in a uniformizer.

@@ -1,7 +1,5 @@
 # The primes ramified in $N/\mathbb{Q}$
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $f=\prod\_{i=1}^{s}f\_i$ with $f\_i\in\mathbb{Z}[x]$ monic irreducible, $n\_i=\deg f\_i$, $K\_i=\mathbb{Q}[x]/(f\_i)=\mathbb{Q}(\alpha\_i)$, $\mathcal{O}\_i$ the maximal order of $K\_i$, $A=\mathbb{Q}[x]/(f)\cong\prod\_iK\_i$ with maximal order $\mathcal{O}\_A=\prod\_i\mathcal{O}\_i$, $\mathrm{disc}(\mathcal{O}\_A)=\prod\_i\mathrm{disc}(\mathcal{O}*i)$. $N$ is the splitting field of $f$, the compositum inside $\bar{\mathbb{Q}}$ of all conjugates $K\_i^\sigma=\sigma(K\_i)$, $\sigma\in\mathrm{Hom}(K\_i,\bar{\mathbb{Q}})$. A prime $\ell$ is unramified in a number field $L$ if every prime of $L$ above $\ell$ has ramification index $1$; equivalently $\mathcal{O}L/\ell\mathcal{O}L$ is a product of fields; equivalently $L\otimes\mathbb{Q}\mathbb{Q}\ell$ is a product of unramified extensions of $\mathbb{Q}*\ell$. It is *unramified in the étale algebra $A$* if it is unramified in every $K\_i$.
 
 ## 1. The criterion

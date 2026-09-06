@@ -1,7 +1,5 @@
 # Matching the $\ell$-adic numbering with the global numbering
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** Global numbering $\alpha\_1,\dots,\alpha\_n$ (at $p$), Galois group $G\le S\_n$ in it, certificate chain $S\_n=G\_0>G\_1>\dots>G\_t=G$ with invariants $F\_i\in\mathbb{Z}[x\_1,\dots,x\_n]$ (Tschirnhaus transforms folded in), $\mathrm{Stab}*{G*{i-1}}(F\_i)=G\_i$, indices $m\_i=[G\_{i-1}\:G\_i]$, recorded integers $c\_i=F\_i(\alpha)$, and the recorded fact that the $m\_i$ values $F\_i(\tau\alpha)$, $\tau\in G\_{i-1}/G\_i$, are pairwise distinct. Local numbering $\beta\_1,\dots,\beta\_n\in L$ from [local Galois groups](https://claude.ai/chat/local-galois-groups.md), with local group $D\le S\_n$ in that numbering ($\phi(\beta\_i)=\beta\_{d(i)}$ for $d\in D$), inertia $I\trianglelefteq D$ and the higher ramification groups likewise in the $\beta$-numbering. Conventions: $(\rho P)(x)=P(x\_{\rho(1)},\dots,x\_{\rho(n)})$, a left action; for a tuple $\beta$ and $\rho\in S\_n$, $\beta^\rho:=(\beta\_{\rho(1)},\dots,\beta\_{\rho(n)})$, so $F(\beta^\rho)=(\rho F)(\beta)$; $g(P(\alpha))=(gP)(\alpha)$ for $g\in G$.
 
 ## 1. The matching problem

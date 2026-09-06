@@ -1,7 +1,5 @@
 # Identities among Euler factors across characters, and what they determine
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $\ell$ fixed (ramified or not); $D=D\_\ell$, $I=I\_\ell$, $f=[D\:I]$, $\mathrm{Fr}\in\mathrm{Fr}*\ell I$; for a virtual character $\theta$ of $G$, $P*\ell(\theta;T)$ is defined by additivity from [Euler factors](https://claude.ai/chat/euler-factors.md) ($P\_\ell(\theta;T)=\det(1-\rho\_\theta(\mathrm{Fr})T\mid V\_\theta^{I})$ for characters, and quotients for differences). $\mathrm{Cl}*\mathbb{Q}(G)$ is the space of rational class functions of* [*rational classes*](https://claude.ai/chat/rational-classes.md)*; $R(G)$ the character ring; $R*\mathbb{Q}(G)=R(G)\cap\mathrm{Cl}\_\mathbb{Q}(G)$ the rational-valued virtual characters. For $H\le G$, $F\_H=N^H$, $\pi\_H=1\_H^G$.
 
 ## 1. Additivity and inductivity

@@ -1,7 +1,5 @@
 # When the polygons do not determine the filtration, and what does
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** As in [the filtration](https://claude.ai/chat/ramification-filtration.md): $D=\mathrm{Gal}(L/\mathbb{Q}*\ell)$, $I=D\_0$, $P=D\_1$ the wild subgroup, $i\_L$, $\nu=v*\ell(\mathrm{disc}f)$, $e=e(L)$, $f=f(L)$, $\delta(L)=\sum\_{\sigma\ne1}i\_L(\sigma)\le e\nu$. The *polygon data* are the coset-sum functions $J\_H(\sigma)=\sum\_{\tau\in\sigma H}i\_L(\tau)$ for $H$ in a family $\mathcal{H}$ of subgroups, the stabilizers $H\_\beta$ of the roots (factor polygons) and the intersections $H\_\beta\cap H\_{\beta'}$ (pairwise compositum polygons), known by [the filtration](https://claude.ai/chat/ramification-filtration.md) Lemma 3.1 from the ramification polygons of $L^H$. A *filtration function* is $j\:D\to\mathbb{Z}*{\ge0}\cup{\infty}$ with $j(1)=\infty$, $j=0$ off $I$, $j=1$ on $I\setminus P$, and $D\_i(j):={j\ge i+1}$ ($i\ge1$) a decreasing chain of normal subgroups of $D$ inside $P$ with elementary abelian successive quotients; $j$ is determined by the chain $(D\_i(j))*{i\ge1}$, and $i\_L$ is one such function. Write $\mathcal{C}(\mathcal{H})$ for the set of filtration functions $j$ with $J^{(j)}\_H=J\_H$ for all $H\in\mathcal{H}$, where $J^{(j)}*H(\sigma)=\sum*{\tau\in\sigma H}j(\tau)$.
 
 ## 1. What a polygon sees

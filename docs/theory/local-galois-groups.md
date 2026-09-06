@@ -1,7 +1,5 @@
 # $\mathrm{Gal}(f/\mathbb{Q}\_\ell)$ for reducible $f$
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** Over $\mathbb{Z}*\ell$, $f=\prod*{j=1}^sg\_j$ with $g\_j$ monic irreducible of degree $d\_j$, local invariants $(e\_j,f\_j)$ with $e\_jf\_j=d\_j$ ([the ramified primes](https://claude.ai/chat/ramified-primes.md)), $\nu\_j=v\_\ell(\mathrm{disc},g\_j)$, $\nu=v\_\ell(\mathrm{disc}f)\ge\sum\_j\nu\_j$. Let $L\_j$ be the splitting field of $g\_j$ over $\mathbb{Q}*\ell$, $D\_j=\mathrm{Gal}(L\_j/\mathbb{Q}*\ell)$ acting on the $d\_j$ roots of $g\_j$, $L=L\_1\cdots L\_s$ the splitting field of $f$, and $D=\mathrm{Gal}(L/\mathbb{Q}*\ell)$ acting on all $n$ roots in their $\ell$-adic numbering. $D$ is the decomposition group $D*\ell\le G$ once the $\ell$-adic numbering is aligned with the $p$-adic one ([the precision policy](https://claude.ai/chat/precision-policy.md) §4). Valuations are normalized by $v(\ell)=1$; for a finite extension $K/\mathbb{Q}\_\ell$, $e(K),f(K)$ are its ramification index and residue degree, and "precision $\kappa$ in $K$" means modulo $\varpi\_K^{\kappa}$.
 
 ## 1. What determines $D$

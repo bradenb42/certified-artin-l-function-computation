@@ -1,7 +1,5 @@
 # The conductor $\mathfrak{f}(\chi)$ and its cross-checks against $\det\rho\_\chi$ and $\chi\bar\chi$
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $f\_\ell(\chi)$ from [conductor exponents](https://claude.ai/chat/conductor-exponents.md) for every class function $\chi$ of $G$ and every ramified $\ell$ (the list of [the ramified primes](https://claude.ai/chat/ramified-primes.md)); $f\_\ell(\chi)=0$ at unramified $\ell$ since $D\_0=1$ there. For $\chi\in\mathrm{Irr}(G)$ with representation $\rho\_\chi$ on $V$, $\lambda\_\chi:=\det\rho\_\chi$ is a linear character of $G$, hence a character of $G^{ab}$; $\widehat{G^{ab}}$ and the Dirichlet characters $\chi\_\psi$ of conductor $c\_\psi$ attached to $\psi\in\widehat{G^{ab}}$ are those of [cyclotomic refinement](https://claude.ai/chat/cyclotomic-refinement.md) §1. For a linear character $\lambda$ of order $o=o(\lambda)$ let $N\_\lambda=N^{\ker\lambda}$, cyclic of degree $o$ over $\mathbb{Q}$, with discriminant $d\_{N\_\lambda}$.
 
 ## 1. The global conductor

@@ -1,7 +1,5 @@
 # Choosing and realising the separating coset actions
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** As in [rational classes](https://claude.ai/chat/rational-classes.md): $G\le S\_n$ with the numbering at $p$, classes $C\_1,\dots,C\_r$ with representatives $g\_k$, power maps and rational classes from [the character table](https://claude.ai/chat/character-table.md) to [rational classes](https://claude.ai/chat/rational-classes.md). $G\_1$ is the stabilizer of the point $1$, so $\pi\_{G\_1}$ is the degree-$n$ permutation character. $R\_0$ denotes a root bound of $f$ ([the precision policy](https://claude.ai/chat/precision-policy.md)). $\mathcal{S}$ denotes the set of conjugacy classes of subgroups of $G$ (or any sub-collection containing all cyclic subgroups, when the full lattice is not enumerated).
 
 ## 1. Blocks and sub-blocks

@@ -1,7 +1,5 @@
 # The local root number at a wildly ramified prime by Brauer induction in degree zero
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $\ell$ ramified, $D=D\_\ell$ with its filtration ([the filtration](https://claude.ai/chat/ramification-filtration.md) to [filtration uniqueness](https://claude.ai/chat/filtration-uniqueness.md)), $L=N\_{\mathfrak{L}}$, $\chi\in\mathrm{Irr}(G)$. Conventions ($\psi\_\ell$, $\psi\_F=\psi\_\ell\circ\mathrm{Tr}*{F/\mathbb{Q}*\ell}$, self-dual measures, $\mathrm{rec}$ with uniformizers $\mapsto$ arithmetic Frobenius) as in [tame root numbers](https://claude.ai/chat/tame-root-numbers.md). For a subgroup $A\le D$ put $F\_A=L^A$, $q\_A=|k\_{F\_A}|$, $d\_A=v\_{F\_A}(\mathfrak{D}*{F\_A/\mathbb{Q}*\ell})$ (so $\psi\_{F\_A}$ has conductor $\mathfrak{p}\_{F\_A}^{-d\_A}$). $R(H)$ is the character ring of a finite group $H$ and $R\_0(H)=\ker(\deg)$. A group is *elementary* if it is a direct product of a cyclic group and a $p$-group for some prime $p$; subgroups of elementary groups are elementary; elementary groups are nilpotent, hence M-groups (every irreducible character is induced from a linear character of a subgroup).
 
 **Target.** $\varepsilon\_\ell(\chi)=\varepsilon(\rho\_\chi|*D,\psi*\ell)$. Write

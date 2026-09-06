@@ -1,7 +1,5 @@
 # Independence of $D\_\ell$ from the choices in [local Galois groups](https://claude.ai/chat/local-galois-groups.md) to [matching](https://claude.ai/chat/matching.md)
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Conventions (fixed for this note).** Global numbering $\alpha\_1,\dots,\alpha\_n$ with $G\le S\_n$; local numbering $\beta\_1,\dots,\beta\_n\in L$ from [local Galois groups](https://claude.ai/chat/local-galois-groups.md) with local group $D\le S\_n$ defined by $\phi(\beta\_i)=\beta\_{d(i)}$, inertia $I\trianglelefteq D$, higher ramification groups $D\_u\le I$ ($D\_0=I$), Frobenius coset $\Phi\in D/I$. A *matching* is $\tau\in S\_n$ with
 
 $$\beta\_i=\iota(\alpha\_{\tau(i)})\quad(1\le i\le n)\qquad\text{for some embedding }\iota\:N\to\bar{\mathbb{Q}}\_\ell .$$

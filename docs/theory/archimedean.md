@@ -1,7 +1,5 @@
 # Complex conjugation, the Gamma factor and the archimedean root number
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $N\subset\bar{\mathbb{Q}}$ the splitting field with $G\le S\_n$ in the $p$-adic numbering; for an embedding $\iota\_\infty\:N\to\mathbb{C}$, complex conjugation restricts to an automorphism $c\_{\iota\_\infty}\in G$; embeddings differ by elements of $G$, so the class $c^G$ is well defined. $D\_\infty=\langle c\rangle$ is the decomposition group at the infinite place; $c^2=1$.
 
 ## 1. The class of $c$

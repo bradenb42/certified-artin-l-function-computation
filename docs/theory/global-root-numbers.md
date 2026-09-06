@@ -1,7 +1,5 @@
 # The global root number and its independent evaluations for self-dual characters
 
-*One of the derivations behind* [*artin*](https://claude.ai/README.md)*; the* [*index*](https://claude.ai/chat/README.md) *lists them all and names the code that implements each.*
-
 **Setting.** $\chi\in\mathrm{Irr}(G)$ with representation $\rho=\rho\_\chi$; $\varepsilon\_\infty(\chi)=i^{-b\_\chi}$ ([the archimedean place](https://claude.ai/chat/archimedean.md)), $\varepsilon\_\ell(\chi)=1$ at unramified $\ell$, $\varepsilon\_\ell(\chi)$ from [tame root numbers](https://claude.ai/chat/tame-root-numbers.md) (tame) or [wild root numbers](https://claude.ai/chat/wild-root-numbers.md) (wild), all with the additive characters $\psi\_\ell(x)=e^{2\pi i{x}*\ell}$, $\psi*\infty(x)=e^{-2\pi ix}$ and self-dual measures. $\lambda\_\chi=\det\rho$ ([the global conductor](https://claude.ai/chat/global-conductor.md)). $\nu\_2(\chi)=\frac{1}{|G|}\sum\_{g\in G}\chi(g^2)$ is the Frobenius to Schur indicator, computed from the table and the power maps of [the character table](https://claude.ai/chat/character-table.md); $\chi$ is *self-dual* iff $\chi=\bar\chi$ iff $\nu\_2(\chi)\ne0$, *orthogonal* if $\nu\_2=+1$, *symplectic* if $\nu\_2=-1$.
 
 ## 1. Definition, normalization, modulus
