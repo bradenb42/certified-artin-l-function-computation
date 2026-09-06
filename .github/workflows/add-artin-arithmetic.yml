@@ -1,0 +1,47 @@
+name: Add Artin arithmetic modules
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-artin-arithmetic.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruct and verify source files
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64, gzip, hashlib
+          from pathlib import Path
+          files = {
+              'artin/ramified.py': ('._upload/ramified.py.gz.b64', '4e0f5b38a27fe966c523b75556ca2bc26e769c61'),
+              'artin/padic.py': ('._upload/padic.py.gz.b64', '2d3d33976700430d5dbe7f6d1c0b5fe84d214659'),
+          }
+          for dst, (src, expected) in files.items():
+              raw = gzip.decompress(base64.b64decode(Path(src).read_text(), validate=True))
+              got = hashlib.sha1(raw).hexdigest()
+              assert got == expected, (dst, got, expected)
+              Path(dst).write_bytes(raw)
+              compile(raw, dst, 'exec')
+              print(dst, len(raw), got)
+          PY
+      - name: Commit source and clean staging
+        shell: bash
+        run: |
+          rm -rf ._upload
+          rm -f .github/workflows/add-artin-arithmetic.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add ramification and p-adic arithmetic modules'
+          git push
