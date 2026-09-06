@@ -11,7 +11,7 @@ from math import gcd
 import cmath
 
 from .cyclo import Cyc
-from .rootnumber import TameRootNumbers, lcm
+from .rootnumbers import TameRootNumbers, lcm
 from .filtration import HardFailure
 from .perm import from_json
 

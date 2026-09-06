@@ -119,8 +119,8 @@ See [docs/validation.md](docs/validation.md).
 ## Tests
 
 ```bash
-pip install pytest
-python -m pytest tests
+python -m pip install -e '.[test]'
+python -m pytest -q
 ```
 
 Forty-nine tests covering the group and field arithmetic, each stage, the
@@ -142,4 +142,4 @@ tests/            the test suite
 
 ## Licence
 
-MIT.
+[MIT](LICENSE).

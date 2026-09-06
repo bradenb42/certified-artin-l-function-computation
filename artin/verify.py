@@ -216,7 +216,7 @@ def verify_run(run_dir):
     ok_w, bad_w = True, []
     if os.path.exists(rpath):
         from .cyclo import Cyc
-        from .rootnumber import sqrt_prime
+        from .rootnumbers import sqrt_prime
         from .chartable import CharacterTable
         T = CharacterTable(cl)
         RJ = load_json(rpath)

@@ -54,11 +54,11 @@ This is the standard quadratic Hensel lemma; the lifting iteration is $\ell$-adi
 **Proposition 3.4 (local policy).** Let $k\_\ell>v\_\ell(\Delta)$. Then, from $f$ modulo $\ell^{k\_\ell}$ and computations carried at precision $k\_\ell$:
 
 1. Any factorization $f\equiv\prod\_jg\_j\pmod{\ell^{k\_\ell}}$ into monic factors with pairwise $v\_\ell(\mathrm{Res}(g\_a,g\_b))\<k\_\ell/2$ lifts uniquely (Lemma 3.2) to the true factorization into products of irreducibles, and the true factorization reduced modulo $\ell^{k\_\ell}$ satisfies this hypothesis (Lemma 3.1(c)).
-2. After Hensel-lifting each candidate to precision $k\_\ell$, its irreducibility, and the fields $\mathbb{Q}*\ell(\alpha)$ of its roots (hence $e\_j$, $f\_j$, $d\_j=e\_jf\_j$), are determined by its residue class (Lemma 3.3, as $k*\ell>v\_\ell(\mathrm{disc},g\_j)$): every lift has the same root fields. So they may be read from the $\ell$-maximal order of $\mathbb{Z}\_\ell[x]/(\tilde g)$ for any lift $\tilde g$ ([the ramified primes](https://claude.ai/chat/ramified-primes.md), §2), or from a Newton-polygon factorization, applied to the residue.
+2. After Hensel-lifting each candidate to precision $k\_\ell$, its irreducibility, and the fields $\mathbb{Q}*\ell(\alpha)$ of its roots (hence $e\_j$, $f\_j$, $d\_j=e\_jf\_j$), are determined by its residue class (Lemma 3.3, as $k*\ell>v\_\ell(\mathrm{disc},g\_j)$): every lift has the same root fields. So they may be read from the $\ell$-maximal order of $\mathbb{Z}\_\ell[x]/(\tilde g)$ for any lift $\tilde g$ ([the ramified primes](ramified-primes.md), §2), or from a Newton-polygon factorization, applied to the residue.
 3. Distinct roots of $f$ in $\bar{\mathbb{Q}}*\ell$ are distinct at precision $k*\ell$ (Lemma 3.1(c)), so root-equality and root-counting tests on $f$ over any local field are correct.
 4. The same holds for a monic $h\in\mathbb{Z}[x]$ in place of $f$ once $k\_\ell>v\_\ell(\mathrm{disc},h)$.
 
-If $v\_\ell(\Delta)$ is not known ([the ramified primes](https://claude.ai/chat/ramified-primes.md)'s factorization of $\Delta$ not yet done), $\ell^{k\_\ell}>\Delta$ implies $k\_\ell>v\_\ell(\Delta)$.
+If $v\_\ell(\Delta)$ is not known ([the ramified primes](ramified-primes.md)'s factorization of $\Delta$ not yet done), $\ell^{k\_\ell}>\Delta$ implies $k\_\ell>v\_\ell(\Delta)$.
 
 ## 4. Tying the numbering at $p$ to the computations at $\ell$
 

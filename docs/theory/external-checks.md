@@ -1,6 +1,6 @@
 # External correctness checks
 
-The artifact produced by [the character table](https://claude.ai/chat/character-table.md) to [the verifier](https://claude.ai/chat/verifier.md) for a monic separable $f\in\mathbb{Z}[x]$ with proven Galois group $G$ must satisfy the following three checks, each against an independent description of the same outputs. A check applies to $f$ only when $f$ lies in the corresponding family; the artifact records which checks applied and whether they passed.
+The artifact produced by [the character table](character-table.md) to [the verifier](verifier.md) for a monic separable $f\in\mathbb{Z}[x]$ with proven Galois group $G$ must satisfy the following three checks, each against an independent description of the same outputs. A check applies to $f$ only when $f$ lies in the corresponding family; the artifact records which checks applied and whether they passed.
 
 ## Check 1. Abelian $G$, class field theory
 
@@ -28,4 +28,4 @@ The artifact's coefficients $a\_m(\chi)$ for all $m\le X$ and its root number $W
 
 ## Outside the three families
 
-For $f$ and $\chi$ not covered by Checks 1 to 3, the artifact returns the computed data (decomposition groups and filtrations at the ramified primes, Frobenius classes up to $X$, conductors, Euler factors, Gamma factors, root numbers, and the functional-equation defects against their bounds) together with the certificate of [the certificate](https://claude.ai/chat/certificate.md) and the verdict of the verifier of [the verifier](https://claude.ai/chat/verifier.md). It certifies nothing beyond what that verdict states: acceptance proves the algebraic outputs conditional on the certificate for $G$ ([the verifier](https://claude.ai/chat/verifier.md) Theorem 2.1, Corollary 2.2, Theorem 3.1), and the functional-equation test is a rejection test ([the functional-equation test](https://claude.ai/chat/functional-equation.md)).
+For $f$ and $\chi$ not covered by Checks 1 to 3, the artifact returns the computed data (decomposition groups and filtrations at the ramified primes, Frobenius classes up to $X$, conductors, Euler factors, Gamma factors, root numbers, and the functional-equation defects against their bounds) together with the certificate of [the certificate](certificate.md) and the verdict of the verifier of [the verifier](verifier.md). It certifies nothing beyond what that verdict states: acceptance proves the algebraic outputs conditional on the certificate for $G$ ([the verifier](verifier.md) Theorem 2.1, Corollary 2.2, Theorem 3.1), and the functional-equation test is a rejection test ([the functional-equation test](functional-equation.md)).
