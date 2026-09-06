@@ -1,0 +1,49 @@
+name: Assemble derivations 2
+on:
+  push:
+    paths:
+      - '.github/workflows/assemble-derivations-2.yml'
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct and verify Markdown
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64, gzip, hashlib
+          from pathlib import Path
+
+          items = [
+              ('._upload/separating-subgroups.md.gz.b64', 'docs/theory/separating-subgroups.md', '99b4a15559a9bc2b44ef02374192473275aa48f8'),
+              ('._upload/cyclotomic-refinement.md.gz.b64', 'docs/theory/cyclotomic-refinement.md', 'bd3faab199215b12ee072ad491110ff8e37385d6'),
+              ('._upload/direct-route.md.gz.b64', 'docs/theory/direct-route.md', 'f6a47c76ffb530c4ebbf338b2501c0294f704a64'),
+              ('._upload/local-galois-groups.md.gz.b64', 'docs/theory/local-galois-groups.md', 'd556a2f7dff816f9c33b1c6421cc8ae46ce88040'),
+              ('._upload/matching.md.gz.b64', 'docs/theory/matching.md', 'ae98549fd39e0ff23102cd75933eee2014d6a9ea'),
+          ]
+          for src, dst, expected in items:
+              encoded = ''.join(Path(src).read_text().split())
+              raw = gzip.decompress(base64.b64decode(encoded, validate=True))
+              got = hashlib.sha1(raw).hexdigest()
+              if got != expected:
+                  raise SystemExit(f'{src}: SHA1 mismatch {got} != {expected}')
+              out = Path(dst)
+              out.parent.mkdir(parents=True, exist_ok=True)
+              out.write_bytes(raw)
+              print(dst, len(raw), got)
+          PY
+      - name: Commit derivations and remove staging
+        shell: bash
+        run: |
+          rm -rf ._upload
+          rm -f .github/workflows/assemble-derivations-2.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add next derivation pages'
+          git push
