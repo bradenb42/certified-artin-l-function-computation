@@ -51,7 +51,8 @@ DEFAULTS = {
     "root_numbers": True,               # Gauss sums; the cost grows with the ramified primes
     "fe_test": True,                    # functional equation: run the functional-equation test and the subfield identities
     "fe_eps": 1e-12,                    # functional equation: target size of the truncation tail
-    "fe_cap": 20000,        # local: unramified primes on which matching is compared with the class assignment
+    "fe_cap": 20000,                    # functional equation: maximum truncation point
+    "quiet": False,
 }
 
 def parse_poly(s):
@@ -71,10 +72,19 @@ class Log:
         self.fh.write(line + "\n")
         self.fh.flush()
 
+    def close(self):
+        self.fh.close()
+
 def resolve_config(cfg):
     cfg = dict(cfg)
+    supplied = cfg.get("options", {})
+    if not isinstance(supplied, dict):
+        raise TypeError("options must be a mapping")
+    unknown = sorted(set(supplied) - set(DEFAULTS))
+    if unknown:
+        raise ValueError(f"unknown option(s): {', '.join(unknown)}")
     opts = dict(DEFAULTS)
-    opts.update(cfg.get("options", {}))
+    opts.update(supplied)
     cfg["options"] = opts
     cfg["b1"] = {"artin_version": __version__, "certificate_version": CERT_VERSION,
                  "python": platform.python_version(), "sympy": sympy.__version__,
@@ -91,7 +101,7 @@ def run_pipeline(cfg):
     os.makedirs(os.path.join(run_dir, "models"), exist_ok=True)
     cfg = resolve_config(cfg)
     dump_json(cfg, os.path.join(run_dir, "config.json"))   # written first, always
-    log = Log(os.path.join(run_dir, "log.txt"), quiet=cfg["options"].get("quiet", False))
+    log = Log(os.path.join(run_dir, "log.txt"), quiet=cfg["options"]["quiet"])
     log(f"run in {run_dir}; config written")
     opts = cfg["options"]
 
@@ -317,6 +327,7 @@ def run_pipeline(cfg):
     from .certwriter import write_certificate
     write_certificate(run_dir)
     log("certificate.json and CERT.json (self-contained) written")
+    log.close()
     return cert
 
 def main(argv=None):

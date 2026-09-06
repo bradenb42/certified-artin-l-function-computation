@@ -8,6 +8,7 @@ rational-class tests leave together.
 """
 from __future__ import annotations
 from math import gcd
+from ._arith import multiplicative_order
 
 from .cyclo import Cyc, cyclotomic_poly, phi
 from .invariants import Invariant
@@ -17,14 +18,6 @@ from .resolvent import coset_transversal, roots_at
 from .padic import GaloisRing, GF, hensel_lift, roots_in_GF, _pgcd, _ppowmod, _psub, _pmod, _pmul, _ptrim
 from .ramified import factor_mod
 from .fpoly import poly_mod, poly_mul
-
-def multiplicative_order(a, m):
-    a %= m
-    k, x = 1, a
-    while x != 1:
-        x = x * a % m
-        k += 1
-    return k
 
 def ring_with_root_of_unity(f, p, k, o, seed=0):
     """Galois ring at p of degree lcm(r_f, ord_o(p)) containing an element omega of exact

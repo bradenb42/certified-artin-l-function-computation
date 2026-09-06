@@ -1,4 +1,6 @@
-import sys,json,time; sys.path.insert(0,'/home/claude/b1')
+import json
+import sys
+import time
 from artin.check_newforms import check_dihedral
 from artin.ramified import discriminant
 from artin.chartable import is_prime

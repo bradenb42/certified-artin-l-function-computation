@@ -1,4 +1,6 @@
-import sys,time,json; sys.path.insert(0,'/home/claude/b1')
+import json
+import sys
+import time
 from sympy import symbols, Poly
 from sympy.polys.numberfields.galoisgroups import galois_group
 from artin.run import run_pipeline

@@ -9,23 +9,11 @@ those roots.
 """
 from __future__ import annotations
 import random
-from math import gcd
+from math import gcd, lcm
+from ._arith import multiplicative_order
 
 from .padic import GaloisRing, GF, irreducible_poly, roots_in_GF, hensel_lift, _cz, _ptrim, PrecisionExhausted
 from .cyclo import cyclotomic_poly
-
-def lcm(a, b):
-    return a * b // gcd(a, b)
-
-def mult_order(a, m):
-    if m == 1:
-        return 1
-    assert gcd(a, m) == 1
-    k, x = 1, a % m
-    while x != 1:
-        x = x * a % m
-        k += 1
-    return k
 
 class TameField:
     """K = Q_{ell^F}(varpi), varpi^E = ell, at ell-adic precision k (varpi-adic precision E k).
@@ -257,7 +245,7 @@ class LocalGalois:
         if E % ell == 0:
             raise ValueError(f"wild ramification at {ell} (e = {E}): not handled by the tame construction")
         # F also large enough that mu_{2E} lies in Q_{ell^F} (needed by the tame root-number construction: (-ell)^{1/E} in K)
-        F = lcm(F0, mult_order(ell, (2 * E if E % 2 == 0 else E) * (ell ** F0 - 1)))
+        F = lcm(F0, multiplicative_order(ell, (2 * E if E % 2 == 0 else E) * (ell ** F0 - 1)))
         self.ell, self.E, self.F, self.k = ell, E, F, k
         K = TameField(ell, k, E, F, seed)
         self.K = K

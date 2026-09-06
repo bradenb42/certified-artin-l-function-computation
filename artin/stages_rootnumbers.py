@@ -7,11 +7,11 @@ symplectic one), which makes the global root number exact; the corresponding
 predictions are checked and a mismatch stops the run.
 """
 from __future__ import annotations
-from math import gcd
+from math import gcd, lcm
 import cmath
 
 from .cyclo import Cyc
-from .rootnumbers import TameRootNumbers, lcm
+from .rootnumbers import TameRootNumbers
 from .filtration import HardFailure
 from .perm import from_json
 

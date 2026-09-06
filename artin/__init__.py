@@ -6,4 +6,9 @@ irreducible character chi of G: the conductor, the Euler factors, the Gamma
 factor and the root number of L(s, chi), together with a certificate that a
 separate program can check.
 """
-__version__ = "0.1.0"
+from importlib.metadata import PackageNotFoundError, version
+
+try:
+    __version__ = version("artin")
+except PackageNotFoundError:
+    __version__ = "0+unknown"

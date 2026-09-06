@@ -27,15 +27,15 @@ carries an explicit error bound.
 Python 3.10 or later.
 
 ```bash
-pip install -r requirements.txt      # sympy, mpmath, numpy
+python -m pip install .
 ```
 
 ## Use
 
 ```bash
-python -m artin.run --f "x^5-x-1" --gens "[[2,3,4,5,1],[2,1,3,4,5]]" --run-dir runs/x5
-python -m artin.verify runs/x5                  # re-check the run in place
-python -m artinverify.verify runs/x5/CERT.json  # check the certificate independently
+artin-compute --f "x^5-x-1" --gens "[[2,3,4,5,1],[2,1,3,4,5]]" --run-dir runs/x5
+artin-verify-run runs/x5                  # re-check the run in place
+artin-verify-certificate runs/x5/CERT.json  # check the certificate independently
 ```
 
 Generators are 1-indexed image lists: `[2,3,4,5,1]` is the cycle sending root 1
@@ -43,8 +43,8 @@ to root 2, and so on. Instead of `--f`/`--gens` you can pass a certificate
 from a descent computation:
 
 ```bash
-python -m artin.run --descent examples/descent_x5-x-1.json --run-dir runs/x5
-python -m artin.run --config examples/config_example.json
+artin-compute --descent examples/descent_x5-x-1.json --run-dir runs/x5
+artin-compute --config examples/config_example.json
 ```
 
 A run writes its configuration first, then one file per stage:
@@ -93,6 +93,17 @@ Passed under `"options"`; the defaults are in `artin/run.py`.
 | `fe_test` | `True` | run the functional-equation test and the perturbation experiment |
 | `compute_models` | `True` | build matrix models of the characters |
 | `class_enumeration_limit` | 2000000 | refuse to enumerate groups larger than this |
+| `model_dim_limit` | 200 | maximum matrix-model dimension |
+| `model_work_limit` | 6000000 | maximum work budget for matrix-model construction |
+| `seed` | 0 | seed for randomized algorithms |
+| `precision_check_unramified` | 6 | number of unramified primes used by the precision doubling check |
+| `class_confirmation_primes` | 15 | number of primes used for explicit class confirmation |
+| `local_unramified_check` | 6 | number of unramified primes used to check local matching |
+| `fe_eps` | `1e-12` | functional-equation target tail bound |
+| `fe_cap` | 20000 | maximum functional-equation truncation point |
+| `quiet` | `False` | suppress progress output while retaining the run log |
+
+Unknown option names are rejected rather than silently ignored.
 
 ## How it is checked
 

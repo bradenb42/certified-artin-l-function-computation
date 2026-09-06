@@ -10,6 +10,7 @@ from __future__ import annotations
 from fractions import Fraction
 from math import gcd
 import cmath, math
+from ._arith import multiplicative_order
 
 from .cyclo import Cyc, cyclotomic_poly
 from .padic import hensel_lift, roots_in_GF
@@ -17,18 +18,6 @@ from .perm import mul, inverse, identity
 from .schur import Pair, multiplicity
 from .filtration import HardFailure
 from .euler import det_character
-
-def lcm(a, b):
-    return a * b // gcd(a, b)
-
-def mult_order(a, m):
-    if m == 1:
-        return 1
-    k, x = 1, a % m
-    while x != 1:
-        x = x * a % m
-        k += 1
-    return k
 
 # ------------------------------------------------------------------ exact sqrt(ell) and Gauss sums in cyclotomic fields
 
@@ -146,7 +135,7 @@ class TameRootNumbers:
             if n_theta == 0:
                 continue
             e_theta = e // gcd(e, j)
-            f_theta = mult_order(ell, e_theta)
+            f_theta = multiplicative_order(ell, e_theta)
             qF = ell ** f_theta
             b = 0 if ((qF - 1) // e_theta) % 2 == 0 else e_theta // 2
             b_tau = b * (e // e_theta)

@@ -1,4 +1,4 @@
-import sys,time; sys.path.insert(0,'/home/claude/b1')
+import time
 from artin.run import run_pipeline
 from artin.certificate import load_json
 # PSL(2,7) on 7 points: generators (1234567) and (2 3 5)(4 7 6)? we use the standard: a=(0..6), b=(1,2,4)(3,6,5) gives 21; use instead x->x+1 and x->2x on P^1(F_7)? that's 42. PSL(2,7) acting on the 7 points of the Fano plane: generators

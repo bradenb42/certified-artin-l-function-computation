@@ -12,7 +12,7 @@ splitting field, `chi` an irreducible character of `G`, and `ell` a prime.
 
 ## Setting up
 
-| derivation subject code                                                                       |                                                                                                                                                    |                                        |
+| Derivation | Subject | Code |
 | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | [Character table, Schur indices and matrix models](character-table.md) | the table with its certificate, Schur index bounds, models over cyclotomic fields, and why none of the L-function data depends on the model chosen | `artin/chartable.py`, `artin/schur.py` |
 | [The ramified primes](ramified-primes.md)                              | which primes ramify, decided from the discriminants of the factors, with witnesses                                                                 | `artin/ramified.py`                    |
@@ -20,7 +20,7 @@ splitting field, `chi` an irreducible character of `G`, and `ell` a prime.
 
 ## Frobenius classes at the unramified primes
 
-| derivation subject code                                                                               |                                                                                         |                    |
+| Derivation | Subject | Code |
 | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------ |
 | [Rational classes and what coset actions determine](rational-classes.md)       | coset actions determine the rational class of the Frobenius and nothing finer           | `artin/classes.py` |
 | [Choosing and realising the separating coset actions](separating-subgroups.md) | the set-cover choice of separating subgroups, their resolvents, and the excluded primes | `artin/classes.py` |
@@ -29,7 +29,7 @@ splitting field, `chi` an irreducible character of `G`, and `ell` a prime.
 
 ## The ramified primes
 
-| derivation subject code                                                                                  |                                                                                 |                       |
+| Derivation | Subject | Code |
 | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | --------------------- |
 | [Local Galois groups and compositum assembly](local-galois-groups.md)             | the decomposition group at a ramified prime                                     | `artin/local.py`      |
 | [Matching the local roots to the global numbering](matching.md)                   | the matching problem and its solution                                           | `artin/matching.py`   |
@@ -41,7 +41,7 @@ splitting field, `chi` an irreducible character of `G`, and `ell` a prime.
 
 ## L-function data
 
-| derivation subject code                                                                                  |                                                                 |                               |
+| Derivation | Subject | Code |
 | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------- |
 | [Euler factors at a ramified prime](euler-factors.md)                             | three routes to the same factor and the dimension checks        | `artin/euler.py`              |
 | [Identities among the Euler factors](euler-identities.md)                         | what the subgroup identities pin down, and what they leave free | `artin/euler.py`              |
@@ -52,7 +52,7 @@ splitting field, `chi` an irreducible character of `G`, and `ell` a prime.
 
 ## Testing the result
 
-| derivation subject code                                                                |                                                                      |                                                                                       |
+| Derivation | Subject | Code |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | [The smoothed functional-equation test](functional-equation.md) | the test function, the tail bound, and which errors the test detects | `artin/analytic.py`, `artin/falsifier.py`                                             |
 | [Dedekind zeta identities for the subfields](subfield-zeta.md)  | the subfield identities and what they add                            | `artin/stages_analytic.py`                                                            |

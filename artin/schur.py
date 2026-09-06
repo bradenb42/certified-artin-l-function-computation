@@ -11,14 +11,10 @@ for reference and used as an independent route to the Euler factors.
 """
 from __future__ import annotations
 from fractions import Fraction
-from math import gcd
+from math import gcd, lcm
 
 from .cyclo import Cyc, phi, divisors
 from .perm import mul, inverse, power, identity, cycles
-
-
-def lcm(a, b):
-    return a * b // gcd(a, b)
 
 
 def roots_of_unity_in_field(e, stab):
