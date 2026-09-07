@@ -1,9 +1,28 @@
+# Python bytecode and caches
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging and coverage
 build/
 dist/
 *.egg-info/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+
+# Generated run output
 runs/
 out/
-.venv/
+
+# Editors and operating-system metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
